@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Add your CSS and other styles here -->
+  <style>
+    /* Add your styles for the dropdown and other elements here */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-header {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .dropdown-item {
+      padding: 10px;
+    }
+
+    .dropdown-button {
+      display: block;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      text-decoration: none;
+    }
+
+    .dropdown-button:hover {
+      background-color: #555;
+    }
+
+    .user-icon {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dropdown" id="dropdown">
+    <div class="dropdown-header" onclick="toggleDropdown()">
+      <div class="user-icon">
+        <span>👤</span>
+      </div>
+      <?php
+        if ($_SESSION['usernames'] == true) {
+          echo $_SESSION["name"];
+          echo "<br>";
+          echo $_SESSION["email"];
+        } else {
+          echo "Admin";
+        }
+      ?>
+    </div>
+    <div class="dropdown-content">
+      <!-- Add your options here -->
+      <?php if ($_SESSION['usernames'] == true): ?>
+        <div class="dropdown-item">
+          <p>Some Text</p>
+        </div>
+        <a class="dropdown-button" href="log_out.php">Logout</a>
+      <?php else: ?>
+        <a class="dropdown-button" href="login.php">Login</a>
+      <?php endif; ?>
+      <a class="dropdown-button" href="admin_registration.php">Registration</a>
+      <?php if ($_SESSION['usernames'] == true): ?>
+        <a class="dropdown-button" href="admin/dashboard.php">Adminin</a>
+      <?php endif; ?>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdown() {
+      var dropdown = document.getElementById("dropdown");
+      dropdown.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

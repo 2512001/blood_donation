@@ -102,9 +102,9 @@
 
     <header>
         <!-- Replace the following logo div with your actual logo div -->
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="https://example.com/path-to-your-logo.png" alt="Logo">
-        </div>
+        </div> -->
     </header>
 
     <div id="main-container">

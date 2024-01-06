@@ -57,7 +57,7 @@
         }
 
         .alert {
-            margin-top: 30px;
+            margin-top: 4rem;
         }
     </style>
 </head>
